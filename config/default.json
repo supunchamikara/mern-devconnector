@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://supun:supun@devconnector-fzfbe.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtToken": "mySecretToken"
+}
