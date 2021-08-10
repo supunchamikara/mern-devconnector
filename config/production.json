@@ -1,0 +1,7 @@
+{
+    "mongoURI": "mongodb+srv://supun:supun@devconnector-fzfbe.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtToken": "mySecretToken",
+    "githubClientId": "83fd60de4bb1a51058e5",
+    "githubSecret": "2210b5f391cf087824fda497de93953661d55993"
+  }
+  
