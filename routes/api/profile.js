@@ -72,7 +72,10 @@ router.post(
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
-      profileFields.skills = skills.split(",").map((skill) => skill.trim());
+      profileFields.skills = skills
+        .toString()
+        .split(",")
+        .map((skill) => " " + skill.trim());
     }
 
     // build social object
@@ -149,7 +152,8 @@ router.get("/user/:user_id", async (req, res) => {
 
 router.delete("/", auth, async (req, res) => {
   try {
-    // @todo - remove users post
+    // remove users post
+    await Post.deleteMany({ user: req.user.id });
 
     // remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
@@ -182,15 +186,8 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, company, location, from, to, current, description } =
+      req.body;
 
     const newExp = {
       title,
@@ -255,15 +252,8 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const {
-      school,
-      degree,
-      fieldofstudy,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { school, degree, fieldofstudy, from, to, current, description } =
+      req.body;
 
     const newEdu = {
       school,
